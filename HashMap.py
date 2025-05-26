@@ -5,15 +5,14 @@ class HashMap:
         self.array = [None for item in range(array_size)]
 
     def hash(self, key):
-        key_bytes = key.encode()
-        hash_code = sum(key_bytes)
+        hash_code = int(key) #user will enter appropriate int for movie genre
         return hash_code
     
-    def compressor(self, hash_code):
-        return hash_code % self.array_size
-    
     def assign(self, key, value):
-        index = self.compressor(self.hash(key))
+        index = self.hash(key)
         self.array[index] = value
 
+    def retrieve(self, key):
+        index = self.hash(key)
+        return self.array[index]
     
