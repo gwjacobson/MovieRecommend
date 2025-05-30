@@ -1,10 +1,18 @@
 from HashMap import HashMap
+from MovieTitles import movieTitles
 
 def choice_1_fun():
     choice =  input("what would you like to do?  ")
 
     if choice == "a":
-        movieRec_fun()
+        print(movieRec_fun()) #print out movie recommendation
+        print("Would you like another recommendation?")
+        another = input("Select y/n: ")
+        if another == "y":
+            print(movieRec_fun())
+        else:
+            return
+
     elif choice == "b":
         movieAdd_fun()
     else:
@@ -12,26 +20,8 @@ def choice_1_fun():
         choice_1_fun()
 
 def movieRec_fun():
-    pass
-
-def movieAdd_fun():
-    pass
-
-
-
-print("Hello, Welcome to Graeme's Movie Recommendation Program!")
-
-print("To get a movie recommendation, ENTER 'a'")
-print("To add a new movie title to the software, ENTER 'b'")
-
-choice_1_fun() #initial user selection to get recommendation or add title
-
-
-'''
-if choice_1 == 'a':
-
-#this is where you can additional genres
-#adding additional genres needs to be updated in MovieTitles, as well
+    #this is where you can additional genres
+    #adding additional genres needs to be updated in MovieTitles, as well
     print("Available movie genres: ") #List out available movie genres and corresponding input value
     print("For Horror: 0")
     print("For Action: 1")
@@ -47,10 +37,24 @@ if choice_1 == 'a':
     genre_choice_int = int(genre_choice)
 
     if genre_choice_int in range(0, 9):
-        pass
+        recommendation = movieTitles.retrieve(genre_choice)
+        return recommendation
     else:
         genre_choice = input("Please make a valid numerical selection: ")
+        movieRec_fun()
+    
 
-elif choice_1 == 'b':
+def movieAdd_fun():
     pass
-'''
+
+
+
+print("Hello, Welcome to Graeme's Movie Recommendation Program!")
+
+print("To get a movie recommendation, ENTER 'a'")
+print("To add a new movie title to the software, ENTER 'b'")
+
+#print(movieTitles)
+choice_1_fun() #initial user selection to get recommendation or add title
+
+print("Thank you! Have a beautiful time!")
