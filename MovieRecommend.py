@@ -1,4 +1,3 @@
-from HashMap import HashMap
 from MovieTitles import movieTitles
 
 def choice_1_fun():
@@ -6,18 +5,24 @@ def choice_1_fun():
 
     if choice == "a":
         print(movieRec_fun()) #print out movie recommendation
-        print("Would you like another recommendation?")
-        another = input("Select y/n: ")
-        if another == "y":
-            print(movieRec_fun())
-        else:
-            return
-
+        again()
     elif choice == "b":
         movieAdd_fun()
     else:
         print("Please ENTER either 'a' or 'b': ")
         choice_1_fun()
+
+def again():
+    print("Would you like another recommendation?")
+    another = input("Select y/n: ") #only loops once, might need another function
+    if another == "y":
+        print(movieRec_fun())
+        again()
+    elif another == "n":
+        return
+    else:
+        print("Choose 'y' or 'n' ")
+        again()
 
 def movieRec_fun():
     #this is where you can additional genres
